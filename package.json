@@ -1,0 +1,36 @@
+{
+  "name": "artifactory",
+  "version": "1.0.0",
+  "description": "node implementation of artifactory interaction",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "artifactory"
+  ],
+  "author": "leif.eriksen.au@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "github.com/leriksen/artifactory.git"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "coffeescript": "^2.2.4",
+    "grunt": "^1.0.2",
+    "grunt-contrib-coffee": "^2.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-mocha-test": "^0.13.3",
+    "grunt-newer": "^1.3.0",
+    "js-yaml": "^3.11.0",
+    "mocha": "^5.0.5",
+    "mocha-osx-reporter": "^0.1.2"
+  },
+  "dependencies": {
+    "request": "^2.85.0",
+    "request-promise": "^4.2.2"
+  }
+}

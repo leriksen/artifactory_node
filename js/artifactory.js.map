@@ -1,0 +1,13 @@
+{
+  "version": 3,
+  "file": "artifactory.js",
+  "sourceRoot": "../src/",
+  "sources": [
+    "artifactory.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA;AAAA,MAAA,WAAA,EAAA,GAAA,EAAA,aAAA,EAAA,YAAA,EAAA;;EAAA,GAAA,GAAM,OAAA,CAAQ,OAAR;;EACN,EAAA,GAAK,OAAA,CAAQ,iBAAR;;EAEL,YAAA,GAAe,CACb,OADa,EAEb,QAFa,EAGb,SAHa;;EAMf,aAAA,GAAgB,CACd,aADc,EAEd,WAFc,EAGd,MAHc,EAId,eAJc,EAKd,aALc;;EAQV,cAAN,MAAA,YAAA;IACgB,OAAb,UAAa,CAAC,IAAD,CAAA;AACZ,UAAA,CAAA,EAAA,GAAA,EAAA,OAAA,EAAA;AAAA;MAAA,KAAA,8CAAA;;qBAAA,SAAA,CAAU,CAAA,CAAA,CAAG,IAAH,CAAQ,CAAR,CAAA,CAAW,OAAX,CAAA,CAAV;MAAA,CAAA;;IADY;;IAGD,OAAZ,SAAY,CAAC,IAAD,CAAA;AACX,UAAA;MAAA,OAAA,GACE;QAAA,MAAA,EAAQ,KAAR;QACA,GAAA,EAAK,CAAA,kBAAA,CAAA,CAAqB,IAArB,CAAA,CADL;QAEA,uBAAA,EAAyB;MAFzB;aAKF,EAAA,CAAG,OAAH,CACA,CAAC,IADD,CACM,CAAC,QAAD,CAAA,GAAA;QACJ,OAAO,CAAC,GAAR,CAAY,CAAA,0BAAA,CAAA,CAA6B,QAAQ,CAAC,UAAtC,CAAA,CAAZ;eACA;MAFI,CADN,CAIA,CAAC,KAJD,CAIO,CAAC,GAAD,CAAA,GAAA;QACL,OAAO,CAAC,GAAR,CAAY,GAAZ;eACA;MAFK,CAJP;IAPW;;IAeE,OAAd,WAAc,CAAC,GAAD,CAAA;aACb,IAAC,CAAA,QAAD,GAAY,GAAG,CAAC,QAAJ,CAAa,GAAb;IADC;;EAnBjB;;EAsBA,MAAM,CAAC,OAAP,GAAiB;;EAvCjB;AAAA",
+  "sourcesContent": [
+    "Env = require './env'\nrp = require 'request-promise'\n\nrepoVariants = [\n  \"build\"\n  \"verify\"\n  \"release\"\n]\n\ngroupVariants = [\n  \"build-users\"\n  \"build-svc\"\n  \"read\"\n  \"release-users\"\n  \"release-svc\"\n]\n\nclass Artifactory\n  @checkRepos = (base) ->\n    checkRepo \"#{base}-#{variant}\" for variant in repoVariants\n\n  @checkRepo = (name) ->\n    options =\n      method: 'GET'\n      uri: \"http://google.com/#{name}\"\n      resolveWithFullResponse: true\n\n\n    rp options\n    .then (response) =>\n      console.log \"GET succeeded with status #{response.statusCode}\"\n      true\n    .catch (err) =>\n      console.log err\n      false\n      \n  @envSettings = (env) ->\n    @settings = Env.settings(env)\n\nmodule.exports = Artifactory\n\n#api_token = \"24f7a182a033b81c6553f7124ba746e74dda01c3\"\n\n"
+  ]
+}
